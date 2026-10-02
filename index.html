@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Kiriko UI - Video Confession</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,400;0,700;1,400&family=Mitr:wght@200;400;600&display=swap" rel="stylesheet">
+    <!-- Google Identity Services -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <div class="noise-overlay"></div>
+
+    <!-- Landing Screen -->
+    <div class="landing-screen" id="landing-screen">
+        <div class="hands-container">
+            <img src="hands.jpg" alt="eye" class="praying-hands-img" />
+        </div>
+        <button class="start-wish-btn" id="start-wish-btn">เริ่มขอพร</button>
+    </div>
+
+    <div class="container" id="app-container" style="display: none; opacity: 0;">
+        <header>
+            <div class="eye-container" id="kiriko-eye">
+                <svg viewBox="0 0 100 50" class="eye-svg">
+                    <path class="eye-outline" d="M10,25 Q50,25 90,25 Q50,25 10,25 Z" fill="none" stroke="#B2BEB5" stroke-width="2" />
+                    <circle class="eye-pupil" cx="50" cy="25" r="0" fill="#B2BEB5" />
+                    <circle class="eye-iris" cx="50" cy="25" r="0" fill="#000" />
+                </svg>
+            </div>
+            <div class="sanity-meter">
+                <span class="sanity-label">Sanity Meter</span>
+                <span class="sanity-value" id="sanity-text">100%</span>
+                <div class="sanity-bar-bg">
+                    <div class="sanity-bar-fill" id="sanity-fill"></div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="video-area">
+                <div class="camera-frame">
+                    <video id="camera-feed" autoplay muted playsinline></video>
+                    <div class="rec-indicator" id="rec-indicator">REC</div>
+
+                    <div class="drive-overlay" id="drive-overlay">
+                        <div class="spinner"></div>
+                        <p id="upload-status">กำลังเชื่อมต่อ Google Drive...</p>
+                    </div>
+
+                    <div class="countdown-overlay" id="countdown-overlay">
+                        <h1 class="wish-granted" id="wish-granted-text">พรสมหวัง</h1>
+                        <div class="timer-container" id="timer-container" style="display: none; opacity: 0;">
+                            <h3>เวลาสะสางกำลังมาถึง...</h3>
+                            <div class="timer" id="countdown-timer">24:00:00</div>
+                            <p style="font-size: 10px; color: #555; margin-top: 10px;">วิดีโอถูกบันทึกลง Google Drive แล้ว</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-area" id="action-area">
+                <p class="instruction" id="instruction-text">กดปุ่มชัตเตอร์เพื่อบันทึกคำสาปแช่ง</p>
+                <button class="record-btn" id="record-btn">
+                    <div class="btn-inner"></div>
+                </button>
+            </div>
+        </main>
+
+        <section class="live-feed">
+            <h3 class="feed-title">Live Feed</h3>
+            <ul id="feed-list">
+                <li class="feed-item fade">กำลังเชื่อมต่อกับห้วงลึก...</li>
+            </ul>
+        </section>
+
+        <div class="glitch-overlay" id="glitch-overlay"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
